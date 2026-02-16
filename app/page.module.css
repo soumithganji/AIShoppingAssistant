@@ -1,0 +1,68 @@
+.main {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* ─── Background Glows ─── */
+.bgGlow1 {
+  position: fixed;
+  top: -200px;
+  left: -200px;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(220, 50, 70, 0.08) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.bgGlow2 {
+  position: fixed;
+  bottom: -300px;
+  right: -200px;
+  width: 800px;
+  height: 800px;
+  background: radial-gradient(circle, rgba(139, 92, 246, 0.06) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ─── Split Pane ─── */
+.splitPane {
+  display: flex;
+  height: 100%;
+  position: relative;
+  z-index: 1;
+}
+
+.chatSide {
+  width: 420px;
+  min-width: 380px;
+  height: 100%;
+  flex-shrink: 0;
+}
+
+.productSide {
+  flex: 1;
+  height: 100%;
+  min-width: 0;
+}
+
+/* ─── Mobile: Stack Layout ─── */
+@media (max-width: 900px) {
+  .splitPane {
+    flex-direction: column;
+  }
+
+  .chatSide {
+    width: 100%;
+    min-width: unset;
+    height: 50%;
+  }
+
+  .productSide {
+    height: 50%;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+  }
+}
