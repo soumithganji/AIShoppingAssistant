@@ -36,6 +36,18 @@ export default function ProductCard({ product, onCompareToggle, isComparing }) {
                 {product.isOneHourDelivery && (
                     <span className={styles.badgeDelivery}>⚡ 1-Hr Delivery</span>
                 )}
+                {/* Compare Button - Top Right */}
+                <button
+                    className={`${styles.compareButton} ${isComparing ? styles.compareActive : ""}`}
+                    onClick={(e) => {
+                        e.preventDefault();
+                        onCompareToggle?.(product.id);
+                    }}
+                    id={`compare-product-${product.id}`}
+                    title={isComparing ? "Remove from compare" : "Add to compare"}
+                >
+                    {isComparing ? "✓" : "⚖️"}
+                </button>
             </div>
 
             {/* Info */}
@@ -79,26 +91,6 @@ export default function ProductCard({ product, onCompareToggle, isComparing }) {
                 )}
 
                 {hasPromo && <p className={styles.promo}>{product.promo}</p>}
-
-                {/* Actions */}
-                <div className={styles.actions}>
-                    {/* <a
-                        href={product.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className={styles.viewButton}
-                        id={`view-product-${product.id}`}
-                    >
-                        View on Edible.com →
-                    </a> */}
-                    <button
-                        className={`${styles.compareButton} ${isComparing ? styles.compareActive : ""}`}
-                        onClick={() => onCompareToggle?.(product.id)}
-                        id={`compare-product-${product.id}`}
-                    >
-                        {isComparing ? "✓" : "⚖️"}
-                    </button>
-                </div>
             </div>
         </div>
     );
