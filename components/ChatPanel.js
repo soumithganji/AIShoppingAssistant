@@ -14,13 +14,38 @@ const SUGGESTION_CHIPS = [
     { label: "🍫 Chocolate Lover", value: "What are your best chocolate covered options?" },
 ];
 
-export default function ChatPanel({ onProductsUpdate, onLoadingChange }) {
+export default function ChatPanel({ onProductsUpdate, onLoadingChange, onProductClick }) {
     const [messages, setMessages] = useState([]);
     const [inputValue, setInputValue] = useState("");
     const [isLoading, setIsLoading] = useState(false);
     const [showChips, setShowChips] = useState(true);
     const messagesEndRef = useRef(null);
     const inputRef = useRef(null);
+    const messagesAreaRef = useRef(null);
+
+    // Handle clicks on product links using event delegation
+    useEffect(() => {
+        const handleMessageClick = (e) => {
+            const productRef = e.target.closest('.product-ref');
+            if (productRef) {
+                const productId = productRef.dataset.productId;
+                if (productId && onProductClick) {
+                    onProductClick(productId);
+                }
+            }
+        };
+
+        const messagesArea = messagesAreaRef.current;
+        if (messagesArea) {
+            messagesArea.addEventListener('click', handleMessageClick);
+        }
+
+        return () => {
+            if (messagesArea) {
+                messagesArea.removeEventListener('click', handleMessageClick);
+            }
+        };
+    }, [onProductClick]);
 
     const handleClear = () => {
         setMessages([]);
@@ -112,21 +137,21 @@ export default function ChatPanel({ onProductsUpdate, onLoadingChange }) {
 
     const formatMessage = (content) => {
         if (!content) return "";
-        
+
         // Check if content contains a markdown table
         const tablePattern = /\|(.+)\|\n\|[-|\s]+\|\n((?:\|.+\|\n?)+)/g;
         let formatted = content;
-        
+
         // Parse markdown tables
         formatted = formatted.replace(tablePattern, (match, headerRow, bodyRows) => {
             // Parse header cells
             const headers = headerRow.split('|').map(h => h.trim()).filter(h => h);
-            
+
             // Parse body rows
-            const rows = bodyRows.trim().split('\n').map(row => 
+            const rows = bodyRows.trim().split('\n').map(row =>
                 row.split('|').map(cell => cell.trim()).filter(cell => cell)
             );
-            
+
             // Build HTML table
             let tableHtml = '<table class="comparison-table">';
             tableHtml += '<thead><tr>';
@@ -149,10 +174,10 @@ export default function ChatPanel({ onProductsUpdate, onLoadingChange }) {
                 tableHtml += '</tr>';
             });
             tableHtml += '</tbody></table>';
-            
+
             return tableHtml;
         });
-        
+
         // Bold text (for non-table content)
         formatted = formatted.replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>");
         // Product IDs as data attributes for linking (for non-table content)
@@ -194,7 +219,7 @@ export default function ChatPanel({ onProductsUpdate, onLoadingChange }) {
             </div>
 
             {/* Messages Area */}
-            <div className={styles.messagesArea}>
+            <div className={styles.messagesArea} ref={messagesAreaRef}>
                 {/* Welcome message */}
                 {messages.length === 0 && (
                     <div className={styles.welcome}>

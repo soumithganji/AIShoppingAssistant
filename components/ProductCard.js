@@ -3,7 +3,7 @@
 import { useState } from "react";
 import styles from "./ProductCard.module.css";
 
-export default function ProductCard({ product, onCompareToggle, isComparing }) {
+export default function ProductCard({ product, onCompareToggle, isComparing, isHighlighted }) {
     const [isDescExpanded, setIsDescExpanded] = useState(false);
 
     const priceDisplay = () => {
@@ -18,7 +18,7 @@ export default function ProductCard({ product, onCompareToggle, isComparing }) {
     const hasTag = product.productTag && product.productTag.trim().length > 0;
 
     return (
-        <div className={`${styles.card} ${isComparing ? styles.comparing : ""}`}>
+        <div className={`${styles.card} ${isComparing ? styles.comparing : ""} ${isHighlighted ? styles.highlighted : ""}`}>
             {/* Image */}
             <div className={styles.imageWrapper}>
                 <img
@@ -60,7 +60,7 @@ export default function ProductCard({ product, onCompareToggle, isComparing }) {
                             {product.description}
                         </p>
                         {product.description.length > 100 && (
-                            <button 
+                            <button
                                 className={styles.readMoreBtn}
                                 onClick={() => setIsDescExpanded(!isDescExpanded)}
                             >

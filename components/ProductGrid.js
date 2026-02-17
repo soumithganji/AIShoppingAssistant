@@ -1,13 +1,24 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import ProductCard from "./ProductCard";
 import styles from "./ProductGrid.module.css";
 
-export default function ProductGrid({ products, isLoading, onCompare }) {
+export default function ProductGrid({ products, isLoading, onCompare, highlightedProductId }) {
     const [compareIds, setCompareIds] = useState(new Set());
     const [isComparing, setIsComparing] = useState(false);
     const [compareResult, setCompareResult] = useState(null);
+    const productRefs = useRef({});
+
+    // Scroll to highlighted product
+    useEffect(() => {
+        if (highlightedProductId && productRefs.current[highlightedProductId]) {
+            productRefs.current[highlightedProductId].scrollIntoView({
+                behavior: "smooth",
+                block: "center",
+            });
+        }
+    }, [highlightedProductId]);
 
     const toggleCompare = (productId) => {
         setCompareIds((prev) => {
@@ -37,7 +48,7 @@ export default function ProductGrid({ products, isLoading, onCompare }) {
     // Render comparison table from product array
     const renderComparisonTable = (productsToCompare) => {
         if (!productsToCompare || productsToCompare.length < 2) return null;
-        
+
         return (
             <table className={styles.comparisonTable}>
                 <thead>
@@ -158,12 +169,14 @@ export default function ProductGrid({ products, isLoading, onCompare }) {
                 {products.length > 0 && (
                     <div className={styles.grid}>
                         {products.map((product) => (
-                            <ProductCard
-                                key={product.id}
-                                product={product}
-                                isComparing={compareIds.has(product.id)}
-                                onCompareToggle={toggleCompare}
-                            />
+                            <div key={product.id} ref={el => productRefs.current[product.id] = el}>
+                                <ProductCard
+                                    product={product}
+                                    isComparing={compareIds.has(product.id)}
+                                    onCompareToggle={toggleCompare}
+                                    isHighlighted={String(highlightedProductId) === String(product.id)}
+                                />
+                            </div>
                         ))}
                     </div>
                 )}
