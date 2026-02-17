@@ -1,19 +1,58 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Edible Gift Concierge — AI-Powered Product Discovery
 
-## Getting Started
+An intelligent, dual-pane conversational interface designed to help users discover the perfect gift from the Edible Arrangements catalog. Unlike traditional chatbots, this application combines an AI "Gift Concierge" with a real-time, interactive product grid to reduce decision fatigue and improve conversation rates.
 
-First, run the development server:
+## Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- **Dual-Pane Interface**:
+  - **Left Panel**: AI Concierge that probes for occasion, recipient, budget, and dietary needs.
+  - **Right Panel**: Live product grid that updates in real-time as the conversation progresses.
+- **Smart Intent Extraction**: Uses LLMs to parse user messages into structured search queries (Occasion, Budget, Dietary Restrictions, etc.).
+- **Smart Filtering & Ranking**: Automatically filters products by budget, delivery speed (Same Day), and dietary restrictions
+- **Comparisons**: Select multiple products to get an AI-generated comparison.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Tech Stack
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+- **Framework**: Next.js 16
+- **Frontend**: React, CSS Modules
+- **AI/LLM**: Meta Llama 3.1 8B Instruct hosted via **NVIDIA NIM**
+- **Data Source**: Edible Arrangements Public Search API
+
+## Prerequisites
+
+- **Node.js**: v18 or higher recommended.
+- **NVIDIA NIM API Key**: Required for the AI features.
+
+## Installation
+
+  **Install dependencies**:
+    ```bash
+    npm install
+    ```
+
+## Running the Application
+
+1.  Start the development server:
+    ```bash
+    npm run dev
+    ```
+
+2.  Open your browser and navigate to:
+    [http://localhost:3000](http://localhost:3000)
+
+## Project Structure
+
+-   `app/`: Next.js App Router pages and layouts.
+-   `components/`: Reusable UI components (ProductCard, ChatInterface, etc.).
+-   `lib/`: Backend logic and utilities.
+    -   `aiPipeline.js`: Orchestrates the AI flow (Intent -> Search -> Filter -> Response).
+    -   `edibleApi.js`: Handles communication with the Edible Arrangements API.
+    -   `prompts.js`: System prompts and LLM instruction templates.
+-   `public/`: Static assets.
+
+## How It Works
+
+1.  **User Input**: The user says "I need a birthday gift for my mom under $50".
+2.  **Intent Extraction**: The system extracts structured data: `{ occasion: "Birthday", recipient: "Mom", budget_max: 50 }`.
+3.  **Search & Filter**: The app searches the Edible API for "Birthday", filters results < $50, and ranks them.
+4.  **Response**: The AI Concierge responds with a helpful message referencing the specific products found, while the grid updates to show those products visualy.
