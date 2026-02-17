@@ -12,7 +12,7 @@ export async function POST(request) {
     try {
         const { message, conversationHistory, compareProducts: productsToCompare } = await request.json();
 
-        // Handle comparison requests directly (bypass intent extraction)
+        // Handle comparison
         if (productsToCompare && Array.isArray(productsToCompare) && productsToCompare.length >= 2) {
             const result = await compareProducts(productsToCompare, message || "");
             return NextResponse.json({

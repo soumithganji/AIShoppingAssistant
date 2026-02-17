@@ -20,7 +20,7 @@ export default function Home() {
 
   const handleProductClick = useCallback((productId) => {
     setHighlightedProductId(productId);
-    // Clear highlight after animation duration (e.g., 2s)
+    // Clear highlight after animation duration
     setTimeout(() => setHighlightedProductId(null), 2000);
   }, []);
 
