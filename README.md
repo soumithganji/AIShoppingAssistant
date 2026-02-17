@@ -1,5 +1,9 @@
 # Edible Gift Concierge — AI-Powered Product Discovery
 
+# Live Demo
+
+[https://ediblegiftsconcierge.vercel.app](https://ediblegiftsconcierge.vercel.app/)
+
 An intelligent, dual-pane conversational interface designed to help users discover the perfect gift from the Edible Arrangements catalog. Unlike traditional chatbots, this application combines an AI "Gift Concierge" with a real-time, interactive product grid to reduce decision fatigue and improve conversation rates.
 
 ## Features
