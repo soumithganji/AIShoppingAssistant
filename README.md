@@ -1,8 +1,8 @@
 # AI Shopping Assistant — Product Discovery
 
-# Live Demo
+**Live Demo**
 
-[https://ediblegiftsconcierge.vercel.app](https://ediblegiftsconcierge.vercel.app/)
+[https://aishoppingassistant-woad.vercel.app](https://aishoppingassistant-woad.vercel.app)
 
 An intelligent, dual-pane conversational interface designed to act as an AI shopping assistant. It uses the Edible Arrangements catalog and APIs as an example to demonstrate discovering the perfect gift. Unlike traditional chatbots, this application combines an AI "Shopping Assistant" with a real-time, interactive product grid to reduce decision fatigue and improve conversion rates.
 
