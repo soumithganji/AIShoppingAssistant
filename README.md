@@ -1,15 +1,15 @@
-# Edible Gift Concierge — AI-Powered Product Discovery
+# AI Shopping Assistant — Product Discovery
 
 # Live Demo
 
 [https://ediblegiftsconcierge.vercel.app](https://ediblegiftsconcierge.vercel.app/)
 
-An intelligent, dual-pane conversational interface designed to help users discover the perfect gift from the Edible Arrangements catalog. Unlike traditional chatbots, this application combines an AI "Gift Concierge" with a real-time, interactive product grid to reduce decision fatigue and improve conversation rates.
+An intelligent, dual-pane conversational interface designed to act as an AI shopping assistant. It uses the Edible Arrangements catalog and APIs as an example to demonstrate discovering the perfect gift. Unlike traditional chatbots, this application combines an AI "Shopping Assistant" with a real-time, interactive product grid to reduce decision fatigue and improve conversion rates.
 
 ## Features
 
 - **Dual-Pane Interface**:
-  - **Left Panel**: AI Concierge that probes for occasion, recipient, budget, and dietary needs.
+  - **Left Panel**: AI Assistant that probes for occasion, recipient, budget, and dietary needs.
   - **Right Panel**: Live product grid that updates in real-time as the conversation progresses.
 - **Smart Intent Extraction**: Uses LLMs to parse user messages into structured search queries (Occasion, Budget, Dietary Restrictions, etc.).
 - **Smart Filtering & Ranking**: Automatically filters products by budget, delivery speed (Same Day), and dietary restrictions
@@ -59,4 +59,4 @@ An intelligent, dual-pane conversational interface designed to help users discov
 1.  **User Input**: The user says "I need a birthday gift for my mom under $50".
 2.  **Intent Extraction**: The system extracts structured data: `{ occasion: "Birthday", recipient: "Mom", budget_max: 50 }`.
 3.  **Search & Filter**: The app searches the Edible API for "Birthday", filters results < $50, and ranks them.
-4.  **Response**: The AI Concierge responds with a helpful message referencing the specific products found, while the grid updates to show those products visualy.
+4.  **Response**: The AI Assistant responds with a helpful message referencing the specific products found, while the grid updates to show those products visualy.

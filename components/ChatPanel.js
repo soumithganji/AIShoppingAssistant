@@ -116,7 +116,7 @@ export default function ChatPanel({ onProductsUpdate, onLoadingChange, onProduct
                 {
                     role: "assistant",
                     content:
-                        "I'm sorry, I had trouble processing that. Could you try rephrasing your question? 🍓",
+                        "I'm sorry, I had trouble processing that. Could you try rephrasing your question? 🛍️",
                 },
             ]);
         } finally {
@@ -194,9 +194,9 @@ export default function ChatPanel({ onProductsUpdate, onLoadingChange, onProduct
         <div className={styles.chatPanel}>
             {/* Header */}
             <div className={styles.header}>
-                <div className={styles.headerIcon}>🍓</div>
+                <div className={styles.headerIcon}>🛍️</div>
                 <div className={styles.headerText}>
-                    <h2>Edible Gift Concierge</h2>
+                    <h2>AI Shopping Assistant</h2>
                     <span className={styles.status}>
                         <span className={styles.statusDot}></span>
                         Online — Ready to help
@@ -223,11 +223,11 @@ export default function ChatPanel({ onProductsUpdate, onLoadingChange, onProduct
                 {/* Welcome message */}
                 {messages.length === 0 && (
                     <div className={styles.welcome}>
-                        <div className={styles.welcomeEmoji}>🎁</div>
-                        <h3>Welcome to Edible!</h3>
+                        <div className={styles.welcomeEmoji}>🛍️</div>
+                        <h3>Welcome!</h3>
                         <p>
-                            I&apos;m your Gift Concierge — I&apos;ll help you find the perfect
-                            arrangement, treat, or gift. Tell me about the occasion, who
+                            I&apos;m your AI Shopping Assistant — I&apos;ll help you find the perfect
+                            product. We're currently using the Edible catalog. Tell me about the occasion, who
                             it&apos;s for, or just browse!
                         </p>
                     </div>
@@ -241,7 +241,7 @@ export default function ChatPanel({ onProductsUpdate, onLoadingChange, onProduct
                             }`}
                     >
                         {msg.role === "assistant" && (
-                            <div className={styles.avatarSmall}>🍓</div>
+                            <div className={styles.avatarSmall}>🛍️</div>
                         )}
                         <div
                             className={styles.bubbleContent}
@@ -255,7 +255,7 @@ export default function ChatPanel({ onProductsUpdate, onLoadingChange, onProduct
                 {/* Loading indicator */}
                 {isLoading && (
                     <div className={`${styles.messageBubble} ${styles.assistantBubble}`}>
-                        <div className={styles.avatarSmall}>🍓</div>
+                        <div className={styles.avatarSmall}>🛍️</div>
                         <div className={styles.typingIndicator}>
                             <span></span>
                             <span></span>
