@@ -6,6 +6,17 @@
 
 An intelligent, dual-pane conversational interface designed to act as an AI shopping assistant. It uses the Edible Arrangements catalog and APIs as an example to demonstrate discovering the perfect gift. Unlike traditional chatbots, this application combines an AI "Shopping Assistant" with a real-time, interactive product grid to reduce decision fatigue and improve conversion rates.
 
+## Overview
+
+![Welcome Screen](./public/screenshots/welcome.png)
+_Welcome Screen_
+
+![Product Recommendations](./public/screenshots/recommendations.png)
+_Interactive chat and product recommendations_
+
+![Product Comparison](./public/screenshots/comparison.png)
+_Product Comparison Modal_
+
 ## Features
 
 - **Dual-Pane Interface**:
